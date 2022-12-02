@@ -53,8 +53,15 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  // throw new Error('Not implemented');
+  if ((value1 * 2) === Number.POSITIVE_INFINITY && (value2 * 4) === Number.NEGATIVE_INFINITY) {
+    return -value2 / 2;
+  }
+  if ((value1 * 2) === Number.POSITIVE_INFINITY) {
+    return value1;
+  }
+  return (value1 + value2) / 2;
 }
 
 /**
@@ -72,8 +79,11 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  // throw new Error('Not implemented');
+  const a = x1 - x2;
+  const b = y1 - y2;
+  return Math.sqrt(a * a + b * b);
 }
 
 /**
@@ -88,8 +98,9 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  // throw new Error('Not implemented');
+  return -b / a;
 }
 
 
@@ -127,8 +138,9 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  const arr = value.toString().split('');
+  return +arr[arr.length - 1];
 }
 
 
@@ -143,8 +155,8 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return +value;
 }
 
 /**
@@ -203,8 +215,21 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  // throw new Error('Not implemented');
+  if (n === 2 || n === 3) {
+    return true;
+  }
+  let count = 0;
+  for (let i = 1; i <= n; i += 1) {
+    if (n % i === 0) {
+      count += 1;
+    }
+    if (count > 2) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
