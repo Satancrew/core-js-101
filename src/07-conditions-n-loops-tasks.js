@@ -27,8 +27,12 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  // throw new Error('Not implemented');
+  if (num % 5 === 0 && num % 3 === 0) return 'FizzBuzz';
+  if (num % 5 === 0) return 'Buzz';
+  if (num % 3 === 0) return 'Fizz';
+  return num;
 }
 
 
@@ -43,10 +47,13 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  // throw new Error('Not implemented');
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  return n * getFactorial(n - 1);
 }
-
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -60,8 +67,13 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  // throw new Error('Not implemented');
+  let answer = 0;
+  for (let i = n1; i <= n2; i += 1) {
+    answer += i;
+  }
+  return answer;
 }
 
 
@@ -80,8 +92,15 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  // throw new Error('Not implemented');
+  if (a <= 0 || b <= 0 || c <= 0) {
+    return false;
+  }
+  if (a + b > c && a + c > b && b + c > a) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -164,8 +183,15 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  // throw new Error('Not implemented');
+  for (let i = 0; i <= str.length; i += 1) {
+    const check = str.charAt(i);
+    if (str.indexOf(check) === i && str.indexOf(check, i + 1) === -1) {
+      return check;
+    }
+  }
+  return null;
 }
 
 
@@ -191,8 +217,27 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  // throw new Error('Not implemented');
+  let answer = '';
+  if (isStartIncluded) {
+    answer += '[';
+  } else {
+    answer += '(';
+  }
+
+  if (a > b) {
+    answer += `${b}, ${a}`;
+  } else {
+    answer += `${a}, ${b}`;
+  }
+
+  if (isEndIncluded) {
+    answer += ']';
+  } else {
+    answer += ')';
+  }
+  return answer;
 }
 
 
@@ -208,8 +253,9 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // throw new Error('Not implemented');
+  return str.split('').reverse().join('');
 }
 
 
