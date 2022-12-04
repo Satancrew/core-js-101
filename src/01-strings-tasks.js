@@ -99,8 +99,18 @@ function getFirstChar(value) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  const newStr = value.trim();
+  let res = '';
+  for (let i = 0; i <= newStr.length; i += 1) {
+    if (newStr.charAt(i) === '/') {
+      i += 1;
+    } else {
+      res += newStr.charAt(i);
+    }
+  }
+
+  return res;
 }
 
 /**
@@ -131,8 +141,12 @@ function repeatString(value, count) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
+  if (index === -1) return str;
+  const len = value.length;
+
+  return str.slice(0, index) + str.slice(index + len);
 }
 
 /**
@@ -146,8 +160,15 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  let answ = '';
+  str.split('');
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] !== '<' && str[i] !== '>') {
+      answ += str[i];
+    }
+  }
+  return answ;
 }
 
 /**
@@ -180,8 +201,9 @@ function convertToUpperCase(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // throw new Error('Not implemented');
+  return str.split(';');
 }
 
 /**
@@ -227,8 +249,20 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const newAlpha = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  let res = '';
+
+  for (let i = 0; i < str.length; i += 1) {
+    const index = alpha.indexOf(str.charAt(i));
+    if (index === -1) {
+      res += str.charAt(i);
+    } else {
+      res += newAlpha.charAt(index);
+    }
+  }
+  return res;
 }
 
 /**
