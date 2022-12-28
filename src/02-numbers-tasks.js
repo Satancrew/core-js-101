@@ -122,8 +122,11 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  // throw new Error('Not implemented');
+  const check1 = Math.atan2(y2, x2);
+  const check2 = Math.atan2(y1, x1);
+  return Math.abs(check1 - check2);
 }
 
 /**
@@ -248,8 +251,14 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  let answer;
+  if (typeof value === 'number') {
+    answer = value;
+  } else {
+    answer = Number(value);
+  }
+  return Number.isNaN(answer) ? def : answer;
 }
 
 module.exports = {
